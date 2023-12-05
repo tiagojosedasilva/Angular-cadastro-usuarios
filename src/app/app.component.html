@@ -1,2 +1,23 @@
-<app-home></app-home>
+
+<div class="container">
+    <h1>Cadastro de Usuários</h1>
+
+    <input type="text" [(ngModel)]="nome" [ngModelOptions]="{standalone: true}">
+    <button (click)="ObterPorNome()" type="submit">Exibir usuario</button>
+
+    <p>{{ usuario }}</p>
+    
+    <form (ngSubmit)="adicionar()" class="form">
+        <input type="text" placeholder="Nome" [(ngModel)]="usuarioNome" required [ngModelOptions]="{standalone: true}">
+        <input type="text" placeholder="Email" [(ngModel)]="usuarioEmail" required [ngModelOptions]="{standalone: true}">
+        <input type="text" placeholder="Telefone" [(ngModel)]="usuarioPhone" required [ngModelOptions]="{standalone: true}">
+        <button type="submit">Adicionar usuario</button>
+    </form>
+
+    <div>
+        <button (click)="obterTodosUsuarios()">Listar usuarios</button>
+        <button (click)="excluirUsuario()">Excluir usuário</button>
+        <button (click)="editarUsuario()">Editar usuário</button>
+    </div>
+</div>
 <router-outlet></router-outlet>
