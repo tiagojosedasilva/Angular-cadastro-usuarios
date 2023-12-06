@@ -1,0 +1,10 @@
+<div class="container">
+    <h1>Cadastro de Usuários</h1>
+    
+    <form (ngSubmit)="editarUsuario(1)" class="form">
+        <input type="text" placeholder="Nome" [(ngModel)]="usuarioNome" required [ngModelOptions]="{standalone: true}">
+        <input type="text" placeholder="Email" [(ngModel)]="usuarioEmail" required [ngModelOptions]="{standalone: true}">
+        <input type="text" placeholder="Telefone" [(ngModel)]="usuarioPhone" required [ngModelOptions]="{standalone: true}">
+        <button type="submit">Adicionar usuario</button>
+    </form>
+</div>

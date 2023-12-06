@@ -1,35 +1,35 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-import { UserService } from './user.service';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { IUser } from './IUser';
 import { FormsModule } from '@angular/forms';
+import { UserService } from '../user.service';
+import { IUser } from '../IUser';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   providers: [ UserService ],
-  imports: [CommonModule, RouterOutlet, HttpClientModule, FormsModule, RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [CommonModule, RouterOutlet, HttpClientModule, FormsModule, RouterModule],
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.css'
 })
-export class AppComponent {
+export class HomeComponent {
   title = 'Angular-cadastro-usuarios';
-
-  constructor(private userService: UserService){}
-
+  router: any;
   usuarioPorNome: any;
-
   usuario: any;
-
   nome: string = "";
-
   usuarioNome: string = "";
   usuarioEmail: string = "";
   usuarioPhone: string = "";
-
   usuarioId: number = 0;
+  user: number | undefined
+  ;
+
+  constructor(private userService: UserService, router: Router){}
+
+ 
 
   obterTodosUsuarios(){
     return this.userService.obterTodos().then(( user: IUser[] | undefined) => {
@@ -61,6 +61,10 @@ export class AppComponent {
     .catch(Error => console.error(Error));
     
   }
+  paginaEditar(id: any){
+    this.router.navigate(['/editar', id]);
+  }
+  
   // editarUsuario(id = 2){
   //   const user: IUser = {
   //     nome: 'Geonascio Antônio',
