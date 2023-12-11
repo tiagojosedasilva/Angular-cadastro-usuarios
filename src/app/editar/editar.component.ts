@@ -3,7 +3,7 @@ import { AppComponent } from '../app.component';
 import { UserService } from '../user.service';
 import { IUser } from '../IUser';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-editar',
@@ -15,22 +15,30 @@ import { Router } from '@angular/router';
 })
 export class EditarComponent{
 
-  
-  constructor(private userService: UserService, private route: Router){}
+
+  constructor(private userService: UserService, private route: Router, private activatedRoute : ActivatedRoute){}
   id: number | undefined;
-
-  // ngOnInit(): void {
-  //   this.id = this.route.snapshot.params["id"]
-  // }
-
-
+  userID: any;
   usuarioNome: string = "";
   usuarioEmail: string = "";
   usuarioPhone: string = "";
+  usuarioId: number = 0;
   user: any;
 
+  // ngOnInit() {
+  //   this.userID = this.route;
+  //   return console.log()
+  //  }
 
-  editarUsuario(id: number){
+  ngOnInit(): void {
+    this.activatedRoute.paramMap.subscribe(params => {
+      console.log(params)
+      this.userID = params.get('id');
+      this.usuarioId = this.userID
+    });
+  }
+
+  editarUsuario(id:number){
     const usuario: IUser = {
       nome: this.usuarioNome,
       email: this.usuarioEmail,

@@ -1,0 +1,30 @@
+<div class="container">
+  <form class="form" (ngSubmit)="ObterPorNome()">
+    <input type="text" [(ngModel)]="nome" [ngModelOptions]="{standalone: true}">
+    <button type="submit">Exibir usuario</button> 
+  </form>
+  <div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Email</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">Ação</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let user of usuarioPorNome">
+          <tr *ngIf="nome == user.nome">
+            <td>{{user.id}}</td>
+            <td>{{user.nome}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.telefone}}</td>
+            <td>
+                <button [routerLink]="['/editar', user.id]">Editar</button>
+                <button type="button" class="btn btn-danger btn-sm ml-1" (click)="excluirUsuario(user.id)">Deletar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>

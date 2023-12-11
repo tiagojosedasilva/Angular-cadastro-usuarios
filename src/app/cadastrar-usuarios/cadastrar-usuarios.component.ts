@@ -1,20 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-import { UserService } from '../user.service';
 import { IUser } from '../IUser';
+import { UserService } from '../user.service';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-cadastrar-usuarios',
   standalone: true,
-  providers: [ UserService ],
   imports: [CommonModule, RouterOutlet, HttpClientModule, FormsModule, RouterModule],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  templateUrl: './cadastrar-usuarios.component.html',
+  styleUrl: './cadastrar-usuarios.component.css'
 })
-export class HomeComponent implements OnInit{
+export class CadastrarUsuariosComponent implements OnInit{
   title = 'Angular-cadastro-usuarios';
   router: any;
   usuarioPorNome: any;
@@ -75,3 +74,4 @@ export class HomeComponent implements OnInit{
     .catch(Error => console.error(Error));
   }
 }
+

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { UserService } from './user.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { IUser } from './IUser';
 import { FormsModule } from '@angular/forms';
 
@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-root',
   standalone: true,
   providers: [ UserService ],
-  imports: [CommonModule, RouterOutlet, HttpClientModule, FormsModule, RouterOutlet],
+  imports: [CommonModule, RouterOutlet, HttpClientModule, FormsModule, RouterModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

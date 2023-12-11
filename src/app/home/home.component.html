@@ -1,69 +1,27 @@
 <div class="container">
-    <h1>Cadastro de Usuários</h1>
-    
-    <form (ngSubmit)="adicionar()" class="form">
-        <input type="text" placeholder="Nome" [(ngModel)]="usuarioNome" required [ngModelOptions]="{standalone: true}">
-        <input type="text" placeholder="Email" [(ngModel)]="usuarioEmail" required [ngModelOptions]="{standalone: true}">
-        <input type="text" placeholder="Telefone" [(ngModel)]="usuarioPhone" required [ngModelOptions]="{standalone: true}">
-        <button type="submit">Adicionar usuario</button>
-    </form>
-    <form (ngSubmit)="ObterPorNome()">
-        <input type="text" [(ngModel)]="nome" [ngModelOptions]="{standalone: true}">
-        <button type="submit">Exibir usuario</button> 
-    </form>
-    <div>
-        <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Email</th>
-                <th scope="col">Telefone</th>
-                <th scope="col">Ação</th>
-              </tr>
-            </thead>
-            <tbody *ngFor="let user of usuarioPorNome">
-              <tr *ngIf="nome == user.nome">
-                <td>{{user.id}}</td>
-                <td>{{user.nome}}</td>
-                <td>{{user.email}}</td>
-                <td>{{user.telefone}}</td>
-                <td>
-                    <a routerLink="['/editar']">editar</a>
-                    <button type="button" class="btn btn-warning btn-sm" >Editar</button>
-                    <button type="button" class="btn btn-danger btn-sm ml-1" (click)="excluirUsuario(user.id)">Deletar</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-    </div>
-    <div> 
-        <button (click)="obterTodosUsuarios()">Listar usuarios</button>
-        <!-- <button (click)="editarUsuario()">Editar usuário</button> -->
-    </div>
-    <div>
-        <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Email</th>
-                <th scope="col">Telefone</th>
-                <th scope="col">Ação</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let user of usuario">
-                <td>{{user.id}}</td>
-                <td>{{user.nome}}</td>
-                <td>{{user.email}}</td>
-                <td>{{user.telefone}}</td>
-                <td>
-                    <button (click)="paginaEditar(user.id)">editar</button>
-                    <button type="button" class="btn btn-danger btn-sm ml-1" (click)="excluirUsuario(user.id)">Deletar</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-    </div>
+  <div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Email</th>
+          <th scope="col">Telefone</th>
+          <th scope="col">Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of usuario">
+          <td>{{user.id}}</td>
+          <td>{{user.nome}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.telefone}}</td>
+          <td>
+              <button [routerLink]="['/editar', user.id]">Editar</button>
+              <button type="button" class="btn btn-danger btn-sm ml-1" (click)="excluirUsuario(user.id)">Deletar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
