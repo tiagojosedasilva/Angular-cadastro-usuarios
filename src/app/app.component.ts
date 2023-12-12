@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { IUser } from './IUser';
 import { FormsModule } from '@angular/forms';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
